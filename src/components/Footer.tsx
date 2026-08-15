@@ -1,32 +1,26 @@
-import Link from 'next/link';
-
 export default function Footer() {
   return (
-    <footer className="bg-[#0F1B3D] border-t border-[#D4AF37]/20 py-14 px-4">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="text-[#D4AF37] text-2xl mb-5">✝</div>
-        <p className="font-serif text-white/90 text-xl font-semibold mb-1">
-          Jonathan Fredrick &amp; Charisma Standley
+    <footer className="bg-theme-900 border-t border-accent-500/20 py-16 px-4 relative overflow-hidden">
+      {/* Decorative subtle background glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[50%] bg-accent-500 rounded-full blur-[150px] opacity-10 pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <h2 className="font-serif text-3xl font-bold text-bg-cream mb-2 tracking-wide drop-shadow-sm">
+          Jonathan &amp; Charisma
+        </h2>
+        <p className="font-serif text-accent-400 italic mb-8">
+          August 22nd, 2026
         </p>
-        <p className="text-[#D4AF37]/60 text-sm tracking-widest uppercase mb-8">August 22nd</p>
 
-        <div className="flex justify-center gap-8 text-sm text-white/40 mb-8">
-          <Link href="/" className="hover:text-[#D4AF37] transition-colors">Home</Link>
-          <Link href="/gems" className="hover:text-[#D4AF37] transition-colors">Gems of Love</Link>
-          <Link href="/apologetics" className="hover:text-[#D4AF37] transition-colors">Apologetics</Link>
-          <Link href="/faith" className="hover:text-[#D4AF37] transition-colors">Faith</Link>
+        <div className="flex items-center justify-center gap-6 mb-8">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-accent-500/30" />
+          <span className="text-accent-500 text-sm">✦</span>
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-accent-500/30" />
         </div>
 
-        <div className="flex justify-center gap-6 text-sm text-white/30 mb-10">
-          <Link href="https://gospellens.site" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition-colors">
-            Gospel Lens ↗
-          </Link>
-          <Link href="https://substack.com/@gospellens" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37] transition-colors">
-            Substack ↗
-          </Link>
-        </div>
-
-        <p className="text-white/20 text-xs">A gift of faith and truth, with love.</p>
+        <p className="text-bg-sand/60 text-sm">
+          &copy; {new Date().getFullYear()} Jonathan Fredrick &amp; Charisma Standley. All rights reserved.
+        </p>
       </div>
     </footer>
   );

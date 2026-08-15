@@ -1,139 +1,144 @@
 'use client';
 import { useState } from 'react';
 
-type FormType = 'blessing' | 'question' | 'counsel';
+type FormType = 'marriage' | 'prayer' | 'apologetics' | null;
 
-interface ContactCardProps {
-  icon: string;
-  title: string;
-  description: string;
-  formType: FormType;
-  placeholder: string;
-  showEmail?: boolean;
-}
+export default function WordFromYouSection() {
+  const [activeForm, setActiveForm] = useState<FormType>(null);
+  const [submitted, setSubmitted] = useState<FormType>(null);
+  
+  // NOTE: Replace these with actual Formspree endpoint URLs when ready
+  const FORMSPREE_ENDPOINTS = {
+    marriage: 'https://formspree.io/f/placeholder1',
+    prayer: 'https://formspree.io/f/placeholder2',
+    apologetics: 'https://formspree.io/f/placeholder3',
+  };
 
-function ContactCard({ icon, title, description, formType, placeholder, showEmail = false }: ContactCardProps) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: FormType) => {
     e.preventDefault();
-    setLoading(true);
-    // Replace FORM_ID_PLACEHOLDER with your actual Formspree form ID
-    try {
-      const res = await fetch('https://formspree.io/f/FORM_ID_PLACEHOLDER', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message, type: formType }),
-      });
-      if (res.ok) setSubmitted(true);
-    } catch {
-      // show a gentle error
-    } finally {
-      setLoading(false);
+    // Simulate submission for now
+    setTimeout(() => {
+      setSubmitted(type);
+    }, 1000);
+  };
+
+  const renderForm = (type: FormType, title: string, placeholder: string) => {
+    if (submitted === type) {
+      return (
+        <div className="bg-theme-800/50 backdrop-blur-sm border border-accent-500/30 rounded-3xl p-10 text-center animate-fade-in-up">
+          <div className="text-4xl mb-4">🕊️</div>
+          <h3 className="font-serif text-2xl font-bold text-bg-cream mb-2">Thank you</h3>
+          <p className="text-bg-sand/70 text-sm">Your message has been received with love and gratitude.</p>
+          <button 
+            onClick={() => { setSubmitted(null); setActiveForm(null); }}
+            className="mt-8 text-sm font-semibold text-accent-400 hover:text-accent-300 transition-colors"
+          >
+            ← Back to options
+          </button>
+        </div>
+      );
     }
+
+    return (
+      <form 
+        onSubmit={(e) => handleSubmit(e, type)} 
+        className="bg-theme-800/40 backdrop-blur-sm border border-accent-500/20 rounded-3xl p-8 md:p-12 animate-fade-in-up text-left shadow-2xl"
+      >
+        <button 
+          type="button"
+          onClick={() => setActiveForm(null)}
+          className="text-xs font-semibold text-accent-500 uppercase tracking-wider mb-6 hover:text-accent-400 transition-colors flex items-center gap-2"
+        >
+          <span>←</span> Back
+        </button>
+        <h3 className="font-serif text-3xl font-bold text-bg-cream mb-2 drop-shadow-sm">{title}</h3>
+        <p className="text-bg-sand/60 text-sm mb-8">We read every message. Thank you for sharing.</p>
+        
+        <div className="space-y-6">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-bg-sand/90 mb-2">Name (Optional)</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              className="w-full bg-theme-900/50 border border-accent-500/20 rounded-xl px-4 py-3 text-bg-cream placeholder:text-bg-cream/20 focus:outline-none focus:border-accent-500/60 focus:ring-1 focus:ring-accent-500/60 transition-all duration-300"
+              placeholder="How should we address you?"
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-bg-sand/90 mb-2">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              required
+              rows={5}
+              className="w-full bg-theme-900/50 border border-accent-500/20 rounded-xl px-4 py-3 text-bg-cream placeholder:text-bg-cream/20 focus:outline-none focus:border-accent-500/60 focus:ring-1 focus:ring-accent-500/60 transition-all duration-300 resize-none"
+              placeholder={placeholder}
+            ></textarea>
+          </div>
+          <button 
+            type="submit" 
+            className="w-full bg-accent-500 hover:bg-accent-400 text-theme-900 font-bold py-4 rounded-xl transition-colors duration-300 shadow-lg shadow-accent-500/20"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
+    );
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[#E2E8F0] p-8 hover:shadow-lg hover:border-[#D4AF37]/30 transition-all duration-300 flex flex-col">
-      <div className="text-4xl mb-4">{icon}</div>
-      <h3 className="font-serif text-xl font-bold text-[#1A2744] mb-2">{title}</h3>
-      <p className="text-[#4A5568] text-sm leading-relaxed mb-7">{description}</p>
-
-      {submitted ? (
-        <div className="text-center py-8 flex-1 flex flex-col items-center justify-center">
-          <div className="text-4xl mb-3">🙏</div>
-          <p className="font-serif text-[#1A2744] font-semibold text-lg">Thank you!</p>
-          <p className="text-[#4A5568] text-sm mt-1">Your message has been received.</p>
+    <section className="relative bg-theme-900 py-32 px-4 overflow-hidden border-t border-accent-500/10">
+      <div className="absolute top-0 left-0 w-[50%] h-[50%] bg-accent-500 rounded-full blur-[180px] opacity-10 mix-blend-screen pointer-events-none" />
+      
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <p className="text-[10px] md:text-xs font-semibold text-accent-500 uppercase tracking-[0.3em] mb-4">
+          Section 5
+        </p>
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-bg-cream mb-6 drop-shadow-sm">
+          A Word From You
+        </h2>
+        <div className="flex items-center justify-center gap-6 mb-8">
+          <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent-500/30" />
+          <span className="text-accent-500 text-sm">✦</span>
+          <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent-500/30" />
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3 flex-1">
-          <input
-            type="text"
-            placeholder="Your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-[#1A2744] placeholder:text-[#A0AEC0] focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/30 transition-colors"
-          />
-          {showEmail && (
-            <input
-              type="email"
-              placeholder="Your email (optional)"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-[#1A2744] placeholder:text-[#A0AEC0] focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/30 transition-colors"
-            />
+        <p className="text-bg-sand/70 max-w-xl mx-auto mb-16 leading-relaxed text-sm md:text-base">
+          We would love to hear from you. Whether it is marriage advice, a prayer, or an honest question about faith — our inbox is open.
+        </p>
+
+        <div className="max-w-2xl mx-auto">
+          {!activeForm && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button 
+                onClick={() => setActiveForm('marriage')}
+                className="group relative bg-theme-800/40 backdrop-blur-sm border border-accent-500/20 rounded-2xl p-8 hover:-translate-y-1 hover:border-accent-500/50 hover:shadow-xl hover:shadow-accent-500/10 transition-all duration-300 overflow-hidden text-center"
+              >
+                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 drop-shadow-md">💍</div>
+                <h3 className="font-serif font-bold text-bg-cream group-hover:text-accent-400 transition-colors">Marriage<br/>Advice</h3>
+              </button>
+              
+              <button 
+                onClick={() => setActiveForm('prayer')}
+                className="group relative bg-theme-800/40 backdrop-blur-sm border border-accent-500/20 rounded-2xl p-8 hover:-translate-y-1 hover:border-accent-500/50 hover:shadow-xl hover:shadow-accent-500/10 transition-all duration-300 overflow-hidden text-center"
+              >
+                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 drop-shadow-md">🙏</div>
+                <h3 className="font-serif font-bold text-bg-cream group-hover:text-accent-400 transition-colors">A Prayer<br/>for Us</h3>
+              </button>
+
+              <button 
+                onClick={() => setActiveForm('apologetics')}
+                className="group relative bg-theme-800/40 backdrop-blur-sm border border-accent-500/20 rounded-2xl p-8 hover:-translate-y-1 hover:border-accent-500/50 hover:shadow-xl hover:shadow-accent-500/10 transition-all duration-300 overflow-hidden text-center"
+              >
+                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 drop-shadow-md">💭</div>
+                <h3 className="font-serif font-bold text-bg-cream group-hover:text-accent-400 transition-colors">Apologetics<br/>Question</h3>
+              </button>
+            </div>
           )}
-          <textarea
-            placeholder={placeholder}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-            rows={4}
-            className="w-full border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-[#1A2744] placeholder:text-[#A0AEC0] focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/30 transition-colors resize-none"
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full mt-1 bg-[#1A2744] text-white rounded-xl py-3 text-sm font-semibold hover:bg-[#D4AF37] hover:text-[#1A2744] transition-colors duration-300 disabled:opacity-60"
-          >
-            {loading ? 'Sending...' : 'Send Message →'}
-          </button>
-        </form>
-      )}
-    </div>
-  );
-}
 
-export default function WordFromYouSection() {
-  return (
-    <section id="message" className="bg-[#FAF9F6] py-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-[10px] font-semibold text-[#D4AF37] uppercase tracking-[0.25em] mb-3">
-            Section 5
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1A2744] mb-4">
-            A Word From You
-          </h2>
-          <div className="flex items-center justify-center gap-4 mb-5">
-            <div className="h-px w-12 bg-[#D4AF37]/30" />
-            <span className="text-[#D4AF37] text-sm">✦</span>
-            <div className="h-px w-12 bg-[#D4AF37]/30" />
-          </div>
-          <p className="text-[#4A5568] max-w-lg mx-auto leading-relaxed">
-            We&apos;d love to hear from you. Leave a blessing, ask a question, or simply reach out.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <ContactCard
-            icon="💌"
-            title="Say Something"
-            description="Leave a message, blessing or prayer for Jonathan and Charisma on their special day."
-            formType="blessing"
-            placeholder="Write a blessing, prayer or message for the couple..."
-          />
-          <ContactCard
-            icon="❓"
-            title="Ask Us"
-            description="Is there something you&apos;ve been thinking about? A question about faith, Christianity, marriage or life?"
-            formType="question"
-            placeholder="What's your question? Don't hold back..."
-            showEmail
-          />
-          <ContactCard
-            icon="🤝"
-            title="Need Someone to Talk To?"
-            description="If you're looking for Christian counsel, encouragement or someone to talk to, reach out to us."
-            formType="counsel"
-            placeholder="Share what you're going through — we're listening..."
-            showEmail
-          />
+          {activeForm === 'marriage' && renderForm('marriage', 'Marriage Advice', 'Share a lesson, a warning, or an encouragement...')}
+          {activeForm === 'prayer' && renderForm('prayer', 'A Prayer for Us', 'Share a prayer or a blessing for our home...')}
+          {activeForm === 'apologetics' && renderForm('apologetics', 'Apologetics Question', 'What questions or doubts do you have about the Christian faith?')}
         </div>
       </div>
     </section>

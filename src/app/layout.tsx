@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#1A2744',
+  themeColor: '#2b0b16',
 };
 
 export default function RootLayout({
@@ -36,11 +36,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body
-        className="antialiased bg-[#FAF9F6] text-[#1A202C]"
+        className="antialiased min-h-screen flex flex-col"
         style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
       >
         <Navbar />
-        {children}
+        <div className="flex-grow">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

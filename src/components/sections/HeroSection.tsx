@@ -1,81 +1,152 @@
+const poem = `If you now aim your wife to bless,
+Then love her more and love her less.
+
+If in the coming years, by some
+Strange providence of God, you come
+To have the riches of this age,
+And, painless, stride across the stage
+Beside your wife, be sure in health
+To love her, love her more than wealth.
+
+And if your life is woven in
+A hundred friendships, and you spin
+A festal fabric out of all
+Your sweet affections, great and small,
+Be sure, no matter how it rends,
+To love her, love her more than friends.
+
+And if there comes a point when you
+Are tired, and pity whispers, “Do
+Yourself a favor. Come, be free;
+Embrace the comforts here with me.”
+Know this! Your wife surpasses these:
+So love her, love her, more than ease.
+
+And when your marriage bed is pure,
+And there is not the slightest lure
+Of lust for any but your wife,
+And all is ecstasy in life,
+A secret all of this protects:
+Go love her, love her, more than sex.
+
+And if your taste becomes refined,
+And you are moved by what the mind
+Of man can make, and dazzled by
+His craft, remember that the “why”
+Of all this work is in the heart;
+So love her, love her more than art.
+
+And if your own should someday be
+The craft that critics all agree
+Is worthy of a great esteem,
+And sales exceed your wildest dream,
+Beware the dangers of a name.
+And love her, love her more than fame.
+
+And if, to your surprise, not mine,
+God calls you by some strange design
+To risk your life for some great cause,
+Let neither fear nor love give pause,
+And when you face the gate of death,
+Then love her, love her more than breath.
+
+Yes, love her, love her, more than life;
+O, love the woman called your wife.
+Go love her as your earthly best.
+
+Beyond this venture not. But, lest
+Your love become a fool’s facade,
+Be sure to love her less than God.
+
+It is not wise or kind to call
+An idol by sweet names, and fall,
+As in humility, before
+A likeness of your God. Adore
+Above your best beloved on earth
+The God alone who gives her worth.
+And she will know in second place
+That your great love is also grace,
+And that your high affections now
+Are flowing freely from a vow
+Beneath these promises, first made
+To you by God. Nor will they fade
+For being rooted by the stream
+Of Heaven’s Joy, which you esteem
+And cherish more than breath and life,
+That you may give it to your wife.
+
+The greatest gift you give your wife
+Is loving God above her life.
+And thus I bid you now to bless:
+Go love her more by loving less.
+
+Written by John Piper
+For Karsten Luke Piper
+At His Wedding to
+Rochelle Ann Orvis
+May 29, 1995`;
+
 export default function HeroSection() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#0A1428] via-[#1A2744] to-[#1E3055] flex flex-col items-center justify-center px-4 pt-20 pb-16 relative overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute top-16 left-0 w-72 h-72 rounded-full bg-[#D4AF37] opacity-[0.06] blur-3xl pointer-events-none" />
-      <div className="absolute bottom-16 right-0 w-96 h-96 rounded-full bg-[#D4AF37] opacity-[0.04] blur-3xl pointer-events-none" />
+    <section className="relative min-h-screen bg-theme-900 overflow-hidden flex flex-col items-center justify-center pt-32 pb-20 px-4">
+      {/* Background elegant gradients */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-theme-700 rounded-full blur-[120px] opacity-40 mix-blend-screen" />
+        <div className="absolute top-[40%] -right-[10%] w-[40%] h-[40%] bg-accent-500 rounded-full blur-[150px] opacity-15 mix-blend-screen" />
+        <div className="absolute -bottom-[20%] left-[20%] w-[60%] h-[60%] bg-theme-800 rounded-full blur-[120px] opacity-60 mix-blend-screen" />
+      </div>
 
-      <div className="max-w-3xl w-full text-center z-10 animate-fade-in-up">
-
-        {/* Date badge */}
-        <div className="inline-flex items-center gap-3 border border-[#D4AF37]/30 bg-[#D4AF37]/10 rounded-full px-6 py-2 mb-10">
-          <span className="text-[#D4AF37] text-xs">✦</span>
-          <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.25em] uppercase">
-            August 22nd
-          </span>
-          <span className="text-[#D4AF37] text-xs">✦</span>
+      <div className="relative z-10 max-w-4xl mx-auto text-center w-full">
+        {/* Intro Tag */}
+        <div className="opacity-0 animate-fade-in-up">
+          <p className="text-[10px] md:text-xs font-semibold text-accent-500 uppercase tracking-[0.3em] mb-6">
+            Love and Grace
+          </p>
         </div>
 
-        {/* Main title */}
-        <h1 className="font-serif text-5xl md:text-7xl font-bold text-white leading-tight mb-3">
-          Always and Forever
+        {/* Couple's Names */}
+        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-bg-cream mb-6 opacity-0 animate-fade-in-up delay-100 leading-tight drop-shadow-sm">
+          Jonathan <span className="text-accent-500 font-light">&amp;</span> <br className="md:hidden" />
+          <span className="italic text-accent-400">Charisma</span>
         </h1>
-        <p className="font-serif text-xl text-[#D4AF37] italic mb-10">
-          A Beautiful Beginning
+
+        {/* Decorative Divider */}
+        <div className="flex items-center justify-center gap-6 mb-8 opacity-0 animate-fade-in-up delay-200">
+          <div className="h-px w-16 md:w-32 bg-gradient-to-r from-transparent to-accent-500/50" />
+          <span className="text-accent-500 text-xl">✤</span>
+          <div className="h-px w-16 md:w-32 bg-gradient-to-l from-transparent to-accent-500/50" />
+        </div>
+
+        {/* Date */}
+        <p className="text-lg md:text-2xl text-bg-sand font-serif italic mb-16 opacity-0 animate-fade-in-up delay-300">
+          August 22nd, 2026
         </p>
 
-        {/* Gold divider with cross */}
-        <div className="flex items-center justify-center gap-4 mb-12">
-          <div className="h-px w-24 bg-gradient-to-r from-transparent to-[#D4AF37]/50" />
-          <span className="text-[#D4AF37] text-xl">✝</span>
-          <div className="h-px w-24 bg-gradient-to-l from-transparent to-[#D4AF37]/50" />
-        </div>
-
-        {/* Photo placeholder */}
-        <div className="flex justify-center mb-10">
-          <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-[3px] border-[#D4AF37]/60 shadow-2xl shadow-[#D4AF37]/10 overflow-hidden bg-[#243466] flex items-center justify-center">
-            <div className="text-center">
-              <p className="font-serif text-[#D4AF37] text-3xl font-bold">J &amp; C</p>
-              <p className="text-white/30 text-xs mt-1">Your Photo Here</p>
+        {/* The Poem Container */}
+        <div className="mt-12 w-full max-w-3xl mx-auto opacity-0 animate-fade-in-up delay-500 relative group">
+          {/* Decorative glass border blur */}
+          <div className="absolute -inset-1 bg-gradient-to-b from-accent-500/20 to-theme-700/20 rounded-[2rem] blur-md opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+          
+          <div className="relative bg-theme-900/40 backdrop-blur-xl border border-accent-500/20 rounded-[2rem] p-8 md:p-14 shadow-2xl">
+            <div className="flex justify-center mb-6">
+              <span className="text-accent-500 text-2xl opacity-50">❝</span>
+            </div>
+            
+            <h2 className="font-serif text-2xl md:text-3xl text-accent-400 mb-8 font-semibold tracking-wide">
+              Love Her More and Love Her Less
+            </h2>
+            
+            <div className="h-[450px] overflow-y-auto poem-scroll pr-4 text-center md:text-left">
+              <div className="space-y-6 text-bg-sand/90 font-serif leading-relaxed text-sm md:text-lg whitespace-pre-wrap">
+                {poem}
+              </div>
+            </div>
+            
+            <div className="flex justify-center mt-6">
+              <span className="text-accent-500 text-2xl opacity-50">❞</span>
             </div>
           </div>
         </div>
-
-        {/* Names */}
-        <div className="mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-white font-semibold">
-            Jonathan Fredrick
-          </h2>
-          <p className="text-[#D4AF37] text-2xl my-2 font-serif italic">&amp;</p>
-          <h2 className="font-serif text-3xl md:text-4xl text-white font-semibold">
-            Charisma Standley
-          </h2>
-        </div>
-
-        {/* Intro card */}
-        <div className="bg-white/[0.05] backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-12 text-left">
-          <p className="text-white/75 leading-relaxed text-center italic font-serif text-lg">
-            We are so grateful you are here. This small corner of the internet is our gift to you — a curated collection of resources, reflections, and invitations that have shaped how we think about love, faith, and marriage. We hope something here speaks to you.
-          </p>
-        </div>
-
-        {/* Piper Poem */}
-        <div className="text-left border-l-2 border-[#D4AF37]/60 pl-7">
-          <p className="text-[#D4AF37] text-[10px] font-semibold uppercase tracking-[0.25em] mb-4">
-            The Poem of All Love Poems
-          </p>
-          <blockquote className="font-serif text-white/80 italic leading-relaxed text-lg md:text-xl space-y-2">
-            <p>&ldquo;If I speak in the tongues of men and of angels,</p>
-            <p>but have not love,</p>
-            <p>I am a noisy gong or a clanging cymbal.</p>
-            <p>And if I have prophetic powers, and understand all mysteries</p>
-            <p>and all knowledge,</p>
-            <p>and if I have all faith, so as to remove mountains,</p>
-            <p>but have not love, I am nothing.&rdquo;</p>
-          </blockquote>
-          <p className="text-[#D4AF37]/80 text-sm mt-5">— 1 Corinthians 13 &nbsp;·&nbsp; <span className="italic">John Piper</span></p>
-        </div>
-
       </div>
     </section>
   );

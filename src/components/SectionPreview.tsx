@@ -1,39 +1,43 @@
 import Link from 'next/link';
 
 interface SectionPreviewProps {
-  icon: string;
-  tagline: string;
   title: string;
   description: string;
   href: string;
-  ctaLabel?: string;
-  accentColor?: string;
+  icon: string;
+  tagline: string;
 }
 
 export default function SectionPreview({
-  icon,
-  tagline,
   title,
   description,
   href,
-  ctaLabel = 'Explore →',
+  icon,
+  tagline,
 }: SectionPreviewProps) {
   return (
-    <div className="group bg-white rounded-2xl shadow-sm border border-[#E2E8F0] p-8 flex flex-col hover:shadow-xl hover:border-[#D4AF37]/40 transition-all duration-300 hover:-translate-y-1">
-      <div className="text-4xl mb-5">{icon}</div>
-      <p className="text-[10px] font-semibold text-[#D4AF37] uppercase tracking-[0.2em] mb-2">
+    <Link
+      href={href}
+      className="group relative block h-full bg-theme-900/50 backdrop-blur-sm border border-accent-500/10 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent-500/10 hover:bg-theme-900/80 hover:border-accent-500/30 overflow-hidden"
+    >
+      {/* Hover gradient effect inside card */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      
+      <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-lg">
+        {icon}
+      </div>
+      <p className="text-[10px] font-semibold text-accent-500 uppercase tracking-[0.2em] mb-2 drop-shadow-sm">
         {tagline}
       </p>
-      <h3 className="font-serif text-2xl font-bold text-[#1A2744] mb-3 leading-snug">
+      <h3 className="font-serif text-2xl font-bold text-bg-cream mb-4 group-hover:text-accent-400 transition-colors">
         {title}
       </h3>
-      <p className="text-[#4A5568] text-sm leading-relaxed flex-1 mb-7">{description}</p>
-      <Link
-        href={href}
-        className="inline-flex items-center text-sm font-semibold text-[#D4AF37] group-hover:gap-2 gap-1 transition-all duration-200"
-      >
-        {ctaLabel}
-      </Link>
-    </div>
+      <p className="text-bg-sand/70 text-sm leading-relaxed mb-6 group-hover:text-bg-sand/90 transition-colors">
+        {description}
+      </p>
+      <div className="inline-flex items-center text-sm font-semibold text-accent-400 group-hover:text-accent-300 transition-colors">
+        Explore <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </Link>
   );
 }
