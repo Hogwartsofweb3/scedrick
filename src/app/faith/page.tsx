@@ -12,7 +12,7 @@ const topics = [
     title: 'The Prosperity Gospel',
     question: 'Does God promise every Christian health, wealth and success?',
     answer:
-      'The Prosperity Gospel teaches that faith, positive speech and tithing will guarantee God's blessing of health and wealth. But this is a distortion of the biblical Gospel. Jesus promised His followers a cross, not a Cadillac. The Bible is honest about suffering, and calls us to faithfulness regardless of earthly outcomes. True Gospel hope is not in temporal prosperity but in the resurrection and the life to come.',
+      "The Prosperity Gospel teaches that faith, positive speech and tithing will guarantee God's blessing of health and wealth. But this is a distortion of the biblical Gospel. Jesus promised His followers a cross, not a Cadillac. The Bible is honest about suffering, and calls us to faithfulness regardless of earthly outcomes. True Gospel hope is not in temporal prosperity but in the resurrection and the life to come.",
   },
   {
     icon: '🌱',
@@ -26,7 +26,7 @@ const topics = [
     title: 'Eternal Security',
     question: 'Is "once saved, always saved" true — no matter what?',
     answer:
-      'This is a genuinely contested question among sincere Christians. Those who affirm eternal security argue that salvation is God's work, and He completes what He begins (Philippians 1:6). Others emphasise the need for perseverance and genuine ongoing faith. What most traditions agree on is this: true saving faith produces fruit — it is not a mere intellectual assent but a life-transforming reality. The question of eternal security is best understood not as a license to sin, but as an anchor of assurance for the genuinely faithful.',
+      "This is a genuinely contested question among sincere Christians. Those who affirm eternal security argue that salvation is God's work, and He completes what He begins (Philippians 1:6). Others emphasise the need for perseverance and genuine ongoing faith. What most traditions agree on is this: true saving faith produces fruit — it is not a mere intellectual assent but a life-transforming reality. The question of eternal security is best understood not as a license to sin, but as an anchor of assurance for the genuinely faithful.",
   },
 ];
 
