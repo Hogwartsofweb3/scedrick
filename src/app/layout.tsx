@@ -1,47 +1,32 @@
-import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next';
+import { Playfair_Display, Inter } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import './globals.css';
 
 const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
+  subsets: ['latin'],
+  variable: '--font-playfair',
 });
 
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
-  title: "A Gift of Faith & Truth | Coming Soon",
-  description: "Curated Christian resources, devotionals, and sermons. A gift for Jonathan's wedding celebration.",
-  openGraph: {
-    title: "A Gift of Faith & Truth | Coming Soon",
-    description: "Curated Christian resources, devotionals, and sermons. A gift for Jonathan's wedding celebration.",
-    url: "https://scedrick.vercel.app/",
-    siteName: "A Gift of Faith & Truth",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "A Gift of Faith & Truth - Coming Soon",
-      }
-    ],
-    locale: "en_US",
-    type: "website",
-  },
+  title: 'A Gift of Faith & Truth | Jonathan & Charisma',
+  description: 'A curated collection of Christian resources gifted at the wedding of Jonathan Fredrick & Charisma Standley.',
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  }
+    icon: '/favicon.ico',
+  },
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
-  themeColor: "#FAF9F6", // warm cream color
-}
+  themeColor: '#1A2744',
+};
 
 export default function RootLayout({
   children,
@@ -50,8 +35,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="antialiased min-h-screen bg-[#FAF9F6] text-[#1A202C] font-sans selection:bg-[#D4AF37] selection:text-white">
+      <body
+        className="antialiased bg-[#FAF9F6] text-[#1A202C]"
+        style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}
+      >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

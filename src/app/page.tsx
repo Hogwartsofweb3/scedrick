@@ -1,46 +1,79 @@
-import React from "react";
+import type { Metadata } from 'next';
+import HeroSection from '@/components/sections/HeroSection';
+import SectionPreview from '@/components/SectionPreview';
+import WordFromYouSection from '@/components/sections/WordFromYouSection';
+import TreasurySection from '@/components/sections/TreasurySection';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'A Gift of Faith & Truth | Jonathan & Charisma',
+  description: 'A curated collection of Christian resources, reflections and invitations — a wedding gift from Jonathan Fredrick & Charisma Standley.',
+  openGraph: {
+    title: 'A Gift of Faith & Truth | Jonathan & Charisma',
+    description: 'A curated collection of Christian resources, reflections and invitations — a wedding gift from Jonathan Fredrick & Charisma Standley.',
+    url: 'https://scedrick.vercel.app/',
+    siteName: 'A Gift of Faith & Truth',
+    locale: 'en_US',
+    type: 'website',
+  },
+};
+
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden bg-[#FAF9F6]">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-32 -left-32 w-64 h-64 rounded-full bg-[#D4AF37] opacity-10 blur-3xl"></div>
-        <div className="absolute bottom-10 -right-20 w-80 h-80 rounded-full bg-[#D4AF37] opacity-5 blur-3xl"></div>
-      </div>
+    <main>
+      {/* Section 1 — Hero */}
+      <HeroSection />
 
-      <div className="max-w-2xl w-full flex flex-col items-center text-center z-10 animate-fade-in-up">
-        {/* Status Badge */}
-        <div className="mb-8">
-          <span className="inline-flex items-center rounded-full bg-[#1A202C]/5 px-4 py-1.5 text-sm font-medium text-[#1A202C] ring-1 ring-inset ring-[#1A202C]/10 backdrop-blur-sm shadow-sm transition-all hover:bg-[#1A202C]/10">
-            <span className="w-2 h-2 rounded-full bg-[#D4AF37] mr-2 animate-pulse"></span>
-            Launching Soon
-          </span>
+      {/* Section Previews — Gems, Apologetics, Faith */}
+      <section className="bg-[#FAF9F6] py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-[10px] font-semibold text-[#D4AF37] uppercase tracking-[0.25em] mb-3">
+              Explore the Gift
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1A2744] mb-4">
+              There is More Inside
+            </h2>
+            <div className="flex items-center justify-center gap-4 mb-5">
+              <div className="h-px w-12 bg-[#D4AF37]/30" />
+              <span className="text-[#D4AF37] text-sm">✦</span>
+              <div className="h-px w-12 bg-[#D4AF37]/30" />
+            </div>
+            <p className="text-[#4A5568] max-w-lg mx-auto leading-relaxed">
+              We&apos;ve put together a collection of resources just for you. Take your time — there&apos;s no rush.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <SectionPreview
+              icon="💎"
+              tagline="Grow together"
+              title="Gems of Love"
+              description="Curated podcasts, sermons, articles and books on love, marriage, friendship, faithfulness and the Christian home."
+              href="/gems"
+            />
+            <SectionPreview
+              icon="🔍"
+              tagline="Questions welcome"
+              title="Questioning Christianity?"
+              description="Atheist, skeptic, agnostic or simply curious? Bring your biggest questions. Christianity does not ask you to abandon your mind."
+              href="/apologetics"
+            />
+            <SectionPreview
+              icon="📖"
+              tagline="What does the Bible say?"
+              title="Many-Faced Faith"
+              description="Christianity is often represented in contradictory ways. Here's what biblical Christianity actually teaches about the questions that divide us."
+              href="/faith"
+            />
+          </div>
         </div>
+      </section>
 
-        {/* Main Content */}
-        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#1A202C] mb-4">
-          A Gift of Faith & Truth
-        </h1>
-        
-        <p className="text-lg md:text-xl text-[#4A5568] font-light mb-10 max-w-xl">
-          Curated Christian Resources & Devotionals
-        </p>
+      {/* Section 5 — A Word From You */}
+      <WordFromYouSection />
 
-        {/* Announcement Card */}
-        <div className="w-full bg-white rounded-2xl shadow-xl shadow-[#D4AF37]/5 border border-[#E2E8F0]/50 p-8 md:p-12 mb-8 transform transition-transform duration-500 hover:scale-[1.01]">
-          <h2 className="font-serif text-2xl font-semibold text-[#1A202C] mb-4">
-            Welcome family and friends!
-          </h2>
-          <p className="text-[#4A5568] leading-relaxed mb-6">
-            This resource portal is currently being prepared for Jonathan & his bride's wedding celebration.
-          </p>
-          <div className="w-16 h-[1px] bg-[#D4AF37]/30 mx-auto mb-6"></div>
-          <p className="text-sm text-[#718096] italic">
-            Check back soon for curated articles, sermons, and spiritual resources from trusted Christian teachers.
-          </p>
-        </div>
-      </div>
+      {/* Section 6 — The Treasury */}
+      <TreasurySection />
     </main>
   );
 }
