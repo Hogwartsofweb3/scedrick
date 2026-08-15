@@ -6,20 +6,38 @@ type FormType = 'marriage' | 'prayer' | 'apologetics' | null;
 export default function WordFromYouSection() {
   const [activeForm, setActiveForm] = useState<FormType>(null);
   const [submitted, setSubmitted] = useState<FormType>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(false);
   
-  // NOTE: Replace these with actual Formspree endpoint URLs when ready
-  const FORMSPREE_ENDPOINTS = {
-    marriage: 'https://formspree.io/f/placeholder1',
-    prayer: 'https://formspree.io/f/placeholder2',
-    apologetics: 'https://formspree.io/f/placeholder3',
-  };
+  const FORMSPREE_URL = 'https://formspree.io/f/moeanwzk';
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: FormType) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, type: FormType) => {
     e.preventDefault();
-    // Simulate submission for now
-    setTimeout(() => {
-      setSubmitted(type);
-    }, 1000);
+    setIsSubmitting(true);
+    setError(false);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append('Category', type || 'unknown');
+
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+      
+      if (response.ok) {
+        setSubmitted(type);
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      setError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const renderForm = (type: FormType, title: string, placeholder: string) => {
@@ -76,11 +94,13 @@ export default function WordFromYouSection() {
               placeholder={placeholder}
             ></textarea>
           </div>
+          {error && <p className="text-red-400 text-sm font-medium">Something went wrong. Please try again.</p>}
           <button 
             type="submit" 
-            className="w-full bg-accent-500 hover:bg-accent-400 text-theme-900 font-bold py-4 rounded-xl transition-colors duration-300 shadow-lg shadow-accent-500/20"
+            disabled={isSubmitting}
+            className="w-full bg-accent-500 hover:bg-accent-400 text-theme-900 font-bold py-4 rounded-xl transition-colors duration-300 shadow-lg shadow-accent-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
         </div>
       </form>
