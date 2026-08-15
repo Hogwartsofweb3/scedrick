@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
@@ -21,13 +22,23 @@ export default function Navbar() {
     <header
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[95%] max-w-5xl rounded-full ${
         scrolled 
-          ? 'bg-theme-900/80 backdrop-blur-xl border border-accent-500/20 shadow-2xl py-3 px-6 md:px-10' 
-          : 'bg-transparent border-transparent py-5 px-4 md:px-8'
+          ? 'bg-theme-900/80 backdrop-blur-xl border border-accent-500/20 shadow-2xl py-2 px-4 md:px-8' 
+          : 'bg-transparent border-transparent py-4 px-4 md:px-8'
       }`}
     >
       <div className="flex items-center justify-between">
-        <Link href="/" className="font-serif text-2xl font-bold text-bg-cream tracking-widest hover:text-accent-400 transition-colors drop-shadow-sm">
-          J<span className="text-accent-500 font-light mx-1">&amp;</span>C
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-accent-500/30 group-hover:border-accent-500 transition-colors shadow-lg">
+            <Image 
+              src="/nav-logo.jpg" 
+              alt="Jonathan & Charisma" 
+              fill 
+              className="object-cover"
+            />
+          </div>
+          <span className="font-serif text-sm md:text-base font-semibold tracking-widest uppercase text-accent-500/90 group-hover:text-accent-400 transition-colors drop-shadow-sm hidden sm:block">
+            Love &amp; Grace
+          </span>
         </Link>
 
         {/* Desktop Nav */}

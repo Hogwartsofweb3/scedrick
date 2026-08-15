@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const poem = `If you now aim your wife to bless,
 Then love her more and love her less.
 
@@ -88,7 +90,7 @@ May 29, 1995`;
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-theme-900 overflow-hidden flex flex-col items-center justify-center pt-32 pb-20 px-4">
+    <section className="relative min-h-screen bg-theme-900 overflow-hidden flex flex-col items-center justify-start pt-32 pb-20 px-4">
       {/* Background elegant gradients */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-theme-700 rounded-full blur-[120px] opacity-40 mix-blend-screen" />
@@ -96,38 +98,56 @@ export default function HeroSection() {
         <div className="absolute -bottom-[20%] left-[20%] w-[60%] h-[60%] bg-theme-800 rounded-full blur-[120px] opacity-60 mix-blend-screen" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center w-full">
-        {/* Intro Tag */}
-        <div className="opacity-0 animate-fade-in-up">
-          <p className="text-[10px] md:text-xs font-semibold text-accent-500 uppercase tracking-[0.3em] mb-6">
-            Love and Grace
-          </p>
+      <div className="relative z-10 max-w-6xl mx-auto w-full pt-10">
+        {/* Top Two-Column Layout */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 mb-20 lg:mb-32 w-full">
+          
+          {/* Left: Landscape Image */}
+          <div className="w-full lg:w-1/2 opacity-0 animate-fade-in-up">
+            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-accent-500/20 group">
+              <div className="absolute inset-0 bg-accent-500/10 mix-blend-overlay z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-0" />
+              <Image 
+                src="/hero-image.jpg"
+                alt="Jonathan and Charisma"
+                fill
+                priority
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+          </div>
+
+          {/* Right: Text Content */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div className="opacity-0 animate-fade-in-up delay-100">
+              <p className="text-xs font-semibold text-accent-500 uppercase tracking-[0.3em] mb-4">
+                Love and Grace
+              </p>
+            </div>
+
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-bg-cream mb-6 opacity-0 animate-fade-in-up delay-200 leading-tight drop-shadow-sm">
+              Jonathan <span className="text-accent-500 font-light">&amp;</span> <br className="hidden md:block lg:hidden" />
+              <span className="italic text-accent-400">Charisma</span>
+            </h1>
+
+            <div className="flex items-center gap-6 mb-8 opacity-0 animate-fade-in-up delay-300">
+              <div className="h-px w-12 lg:w-16 bg-gradient-to-r from-transparent to-accent-500/50 lg:hidden" />
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent-500/50 hidden lg:block" />
+              <span className="text-accent-500 text-xl">✤</span>
+              <div className="h-px w-12 lg:w-16 bg-gradient-to-l from-transparent to-accent-500/50" />
+            </div>
+
+            <p className="text-lg md:text-xl text-bg-sand font-serif italic opacity-0 animate-fade-in-up delay-500">
+              August 22nd, 2026
+            </p>
+          </div>
         </div>
-
-        {/* Couple's Names */}
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-bg-cream mb-6 opacity-0 animate-fade-in-up delay-100 leading-tight drop-shadow-sm">
-          Jonathan <span className="text-accent-500 font-light">&amp;</span> <br className="md:hidden" />
-          <span className="italic text-accent-400">Charisma</span>
-        </h1>
-
-        {/* Decorative Divider */}
-        <div className="flex items-center justify-center gap-6 mb-8 opacity-0 animate-fade-in-up delay-200">
-          <div className="h-px w-16 md:w-32 bg-gradient-to-r from-transparent to-accent-500/50" />
-          <span className="text-accent-500 text-xl">✤</span>
-          <div className="h-px w-16 md:w-32 bg-gradient-to-l from-transparent to-accent-500/50" />
-        </div>
-
-        {/* Date */}
-        <p className="text-lg md:text-2xl text-bg-sand font-serif italic mb-16 opacity-0 animate-fade-in-up delay-300">
-          August 22nd, 2026
-        </p>
 
         {/* The Poem Container */}
-        <div className="mt-12 w-full max-w-3xl mx-auto opacity-0 animate-fade-in-up delay-500 relative group">
+        <div className="w-full max-w-3xl mx-auto opacity-0 animate-fade-in-up delay-[600ms] relative group">
           {/* Decorative glass border blur */}
           <div className="absolute -inset-1 bg-gradient-to-b from-accent-500/20 to-theme-700/20 rounded-[2rem] blur-md opacity-75 group-hover:opacity-100 transition duration-1000"></div>
           
-          <div className="relative bg-theme-900/40 backdrop-blur-xl border border-accent-500/20 rounded-[2rem] p-8 md:p-14 shadow-2xl">
+          <div className="relative bg-theme-900/40 backdrop-blur-xl border border-accent-500/20 rounded-[2rem] p-8 md:p-14 shadow-2xl text-center">
             <div className="flex justify-center mb-6">
               <span className="text-accent-500 text-2xl opacity-50">❝</span>
             </div>
@@ -136,7 +156,7 @@ export default function HeroSection() {
               Love Her More and Love Her Less
             </h2>
             
-            <div className="h-[450px] overflow-y-auto poem-scroll pr-4 text-center md:text-left">
+            <div className="h-[450px] overflow-y-auto poem-scroll pr-2 md:pr-4 text-center md:text-left">
               <div className="space-y-6 text-bg-sand/90 font-serif leading-relaxed text-sm md:text-lg whitespace-pre-wrap">
                 {poem}
               </div>
