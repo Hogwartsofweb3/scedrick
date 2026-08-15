@@ -108,27 +108,29 @@ export default function HeroSection() {
         </div>
 
         {/* Text Content Overlay */}
-        <div className="relative z-10 text-center flex flex-col items-center mt-20">
-          <div className="opacity-0 animate-fade-in-up">
-            <p className="text-xs font-semibold text-accent-400 uppercase tracking-[0.4em] mb-6 drop-shadow-md">
-              Love and Grace
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-end mt-32 px-6 md:px-12">
+          <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-xl">
+            <div className="opacity-0 animate-fade-in-up">
+              <p className="text-xs font-semibold text-accent-400 uppercase tracking-[0.4em] mb-6 drop-shadow-md">
+                Love and Grace
+              </p>
+            </div>
+
+            <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-bold text-bg-cream mb-6 opacity-0 animate-fade-in-up delay-100 leading-tight drop-shadow-lg">
+              Jonathan <span className="text-accent-500 font-light">&amp;</span> <br className="hidden sm:block" />
+              <span className="italic text-accent-400">Charisma</span>
+            </h1>
+
+            <div className="flex items-center gap-6 mb-8 opacity-0 animate-fade-in-up delay-200">
+              <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-accent-400/80 hidden md:block" />
+              <span className="text-accent-400 text-2xl drop-shadow-md">✤</span>
+              <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-accent-400/80" />
+            </div>
+
+            <p className="text-xl md:text-2xl text-bg-cream font-serif italic opacity-0 animate-fade-in-up delay-300 drop-shadow-md">
+              August 22nd, 2026
             </p>
           </div>
-
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-bold text-bg-cream mb-6 opacity-0 animate-fade-in-up delay-100 leading-tight drop-shadow-lg">
-            Jonathan <span className="text-accent-500 font-light">&amp;</span> <br className="hidden sm:block md:hidden" />
-            <span className="italic text-accent-400">Charisma</span>
-          </h1>
-
-          <div className="flex items-center gap-6 mb-8 opacity-0 animate-fade-in-up delay-200">
-            <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-accent-400/80" />
-            <span className="text-accent-400 text-2xl drop-shadow-md">✤</span>
-            <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-accent-400/80" />
-          </div>
-
-          <p className="text-xl md:text-2xl text-bg-cream font-serif italic opacity-0 animate-fade-in-up delay-300 drop-shadow-md">
-            August 22nd, 2026
-          </p>
         </div>
       </div>
 
