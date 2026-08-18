@@ -4,7 +4,7 @@ interface SectionPreviewProps {
   title: string;
   description: string;
   href: string;
-  icon: string;
+  icon: React.ReactNode;
   tagline: string;
 }
 

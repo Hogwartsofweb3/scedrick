@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import HeroSection from '@/components/sections/HeroSection';
 import SectionPreview from '@/components/SectionPreview';
 import WordFromYouSection from '@/components/sections/WordFromYouSection';
@@ -48,21 +49,21 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <SectionPreview
-              icon="💎"
+              icon={<Image src="https://img.icons8.com/ios-filled/100/d4af37/diamond.png" alt="Gems" width={48} height={48} className="object-contain drop-shadow-sm" />}
               tagline="Grow together"
               title="Gems of Love"
               description="Curated podcasts, sermons, articles and books on love, marriage, friendship, faithfulness and the Christian home."
               href="/gems"
             />
             <SectionPreview
-              icon="🔍"
+              icon={<Image src="https://img.icons8.com/ios-filled/100/d4af37/search--v1.png" alt="Search" width={48} height={48} className="object-contain drop-shadow-sm" />}
               tagline="Questions welcome"
               title="Questioning Christianity?"
               description="Atheist, skeptic, agnostic or simply curious? Bring your biggest questions. Christianity does not ask you to abandon your mind."
               href="/apologetics"
             />
             <SectionPreview
-              icon="📖"
+              icon={<Image src="https://img.icons8.com/ios-filled/100/d4af37/holy-bible.png" alt="Bible" width={48} height={48} className="object-contain drop-shadow-sm" />}
               tagline="What does the Bible say?"
               title="Many-Faced Faith"
               description="Christianity is often represented in contradictory ways. Here's what biblical Christianity actually teaches about the questions that divide us."

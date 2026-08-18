@@ -338,13 +338,13 @@ export default function ApologeticsContent() {
           <p className="text-bg-sand/60 text-sm">Explore responses to each question from theologians, philosophers and apologists.</p>
         </div>
 
-        <ResourceCarousel title="Does God Exist?" subtitle="Cosmological, teleological & moral arguments" icon={<span className="text-2xl">🌌</span>} items={godExistsResources} />
-        <ResourceCarousel title="Can We Know God?" subtitle="Revelation, Scripture & personal knowledge" icon={<span className="text-2xl">🕊️</span>} items={knowGodResources} />
-        <ResourceCarousel title="Is the Bible Reliable?" subtitle="Manuscript evidence, archaeology & prophecy" icon={<span className="text-2xl">📜</span>} items={bibleResources} />
-        <ResourceCarousel title="Did Jesus Rise From the Dead?" subtitle="Historical evidence for the Resurrection" icon={<span className="text-2xl">✝️</span>} items={resurrectionResources} />
-        <ResourceCarousel title="Why Does God Allow Suffering?" subtitle="The problem of evil — honest engagement" icon={<span className="text-2xl">❤️‍🩹</span>} items={sufferingResources} />
-        <ResourceCarousel title="Are Miracles Possible?" subtitle="Science, philosophy & divine action" icon={<span className="text-2xl">⚡</span>} items={miraclesResources} />
-        <ResourceCarousel title="Is Jesus the Only Way?" subtitle="The exclusive claims of Christ" icon={<span className="text-2xl">🚪</span>} items={jesusOnlyWayResources} />
+        <ResourceCarousel title="Does God Exist?" subtitle="Cosmological, teleological & moral arguments" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/galaxy.png" alt="Galaxy" width={24} height={24} />} items={godExistsResources} />
+        <ResourceCarousel title="Can We Know God?" subtitle="Revelation, Scripture & personal knowledge" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/dove.png" alt="Dove" width={24} height={24} />} items={knowGodResources} />
+        <ResourceCarousel title="Is the Bible Reliable?" subtitle="Manuscript evidence, archaeology & prophecy" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/scroll.png" alt="Scroll" width={24} height={24} />} items={bibleResources} />
+        <ResourceCarousel title="Did Jesus Rise From the Dead?" subtitle="Historical evidence for the Resurrection" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/cross.png" alt="Cross" width={24} height={24} />} items={resurrectionResources} />
+        <ResourceCarousel title="Why Does God Allow Suffering?" subtitle="The problem of evil — honest engagement" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/broken-heart.png" alt="Heart" width={24} height={24} />} items={sufferingResources} />
+        <ResourceCarousel title="Are Miracles Possible?" subtitle="Science, philosophy & divine action" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/flash-on.png" alt="Lightning" width={24} height={24} />} items={miraclesResources} />
+        <ResourceCarousel title="Is Jesus the Only Way?" subtitle="The exclusive claims of Christ" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/door.png" alt="Door" width={24} height={24} />} items={jesusOnlyWayResources} />
 
         <div className="pb-24 pt-8 text-center">
           <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase text-bg-sand/50 hover:text-accent-400 transition-colors">

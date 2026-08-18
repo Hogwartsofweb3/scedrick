@@ -10,21 +10,21 @@ export const metadata: Metadata = {
 
 const topics = [
   {
-    icon: '💰',
+    icon: <Image src="https://img.icons8.com/ios-filled/100/d4af37/money-bag.png" alt="Prosperity" width={60} height={60} className="object-contain" />,
     title: 'The Prosperity Gospel',
     question: 'Does God promise every Christian health, wealth and success?',
     answer:
       "The Prosperity Gospel teaches that faith, positive speech and tithing will guarantee God's blessing of health and wealth. But this is a distortion of the biblical Gospel. Jesus promised His followers a cross, not a Cadillac. The Bible is honest about suffering, and calls us to faithfulness regardless of earthly outcomes. True Gospel hope is not in temporal prosperity but in the resurrection and the life to come.",
   },
   {
-    icon: '🌱',
+    icon: <Image src="https://img.icons8.com/ios-filled/100/d4af37/sprout.png" alt="Life" width={60} height={60} className="object-contain" />,
     title: 'Abortion',
     question: 'What does the Christian faith say about the value and dignity of human life?',
     answer:
       "The Christian faith teaches that every human being is made in the image of God (imago Dei) — and that this dignity begins at conception. Unborn life, therefore, is not a mere biological process but a sacred gift. Christians who oppose abortion do so not from political ideology but from a deep conviction about the sanctity of every human life at every stage, from womb to tomb.",
   },
   {
-    icon: '🛡️',
+    icon: <Image src="https://img.icons8.com/ios-filled/100/d4af37/shield.png" alt="Security" width={60} height={60} className="object-contain" />,
     title: 'Eternal Security',
     question: 'Is "once saved, always saved" true — no matter what?',
     answer:
@@ -177,9 +177,9 @@ export default function FaithPage() {
           <p className="text-bg-sand/60 text-sm">Watch and read more on each topic from trusted voices.</p>
         </div>
 
-        <ResourceCarousel title="The Prosperity Gospel" subtitle="Critiques and biblical alternatives" icon={<span className="text-2xl">💰</span>} items={prosperityResources} />
-        <ResourceCarousel title="On Abortion" subtitle="The sanctity of human life" icon={<span className="text-2xl">🌱</span>} items={abortionResources} />
-        <ResourceCarousel title="On Eternal Security" subtitle="Perseverance of the saints" icon={<span className="text-2xl">🛡️</span>} items={eternalSecurityResources} />
+        <ResourceCarousel title="The Prosperity Gospel" subtitle="Critiques and biblical alternatives" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/money-bag.png" alt="Prosperity" width={24} height={24} />} items={prosperityResources} />
+        <ResourceCarousel title="On Abortion" subtitle="The sanctity of human life" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/sprout.png" alt="Life" width={24} height={24} />} items={abortionResources} />
+        <ResourceCarousel title="On Eternal Security" subtitle="Perseverance of the saints" icon={<Image src="https://img.icons8.com/ios-filled/50/d4af37/shield.png" alt="Security" width={24} height={24} />} items={eternalSecurityResources} />
       </div>
 
       {/* Go Deeper — Gospel Lens */}
