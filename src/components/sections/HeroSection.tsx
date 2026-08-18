@@ -92,7 +92,7 @@ export default function HeroSection() {
   return (
     <section className="relative w-full bg-theme-900 flex flex-col">
       {/* Top Banner with Full Image */}
-      <div className="relative w-full min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-4">
+      <div className="relative w-full min-h-[60vh] md:min-h-[90vh] flex flex-col items-center justify-center pt-20 md:pt-32 pb-16 md:pb-20 px-4">
         {/* Full Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -100,34 +100,35 @@ export default function HeroSection() {
             alt="Jonathan and Charisma"
             fill
             priority
-            className="object-cover object-top"
+            sizes="100vw"
+            className="object-cover object-center md:object-top"
           />
           {/* Gradient Overlays to make text readable and blend into the next section */}
-          <div className="absolute inset-0 bg-theme-900/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-theme-900 via-theme-900/50 to-transparent" />
+          <div className="absolute inset-0 bg-theme-900/30 md:bg-theme-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-theme-900 via-theme-900/40 to-transparent" />
         </div>
 
         {/* Text Content Overlay */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-end mt-32 px-6 md:px-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-end mt-16 md:mt-32 px-6 md:px-12">
           <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-xl">
             <div className="opacity-0 animate-fade-in-up">
-              <p className="text-xs font-semibold text-accent-400 uppercase tracking-[0.4em] mb-6 drop-shadow-md">
+              <p className="text-xs font-semibold text-accent-400 uppercase tracking-[0.4em] mb-4 md:mb-6 drop-shadow-md">
                 Love and Grace
               </p>
             </div>
 
-            <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-bold text-bg-cream mb-6 opacity-0 animate-fade-in-up delay-100 leading-tight drop-shadow-lg">
-              Jonathan <span className="text-accent-500 font-light">&amp;</span> <br className="hidden sm:block" />
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-bg-cream mb-4 md:mb-6 opacity-0 animate-fade-in-up delay-100 leading-tight drop-shadow-lg">
+              Jonathan <span className="text-accent-500 font-light">&amp;</span> <br />
               <span className="italic text-accent-400">Charisma</span>
             </h1>
 
-            <div className="flex items-center gap-6 mb-8 opacity-0 animate-fade-in-up delay-200">
-              <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-accent-400/80 hidden md:block" />
+            <div className="flex items-center gap-6 mb-6 md:mb-8 opacity-0 animate-fade-in-up delay-200">
+              <div className="h-px w-12 md:w-24 bg-gradient-to-r from-transparent to-accent-400/80" />
               <span className="text-accent-400 text-2xl drop-shadow-md">✤</span>
-              <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-accent-400/80" />
+              <div className="h-px w-12 md:w-24 bg-gradient-to-l from-transparent to-accent-400/80" />
             </div>
 
-            <p className="text-xl md:text-2xl text-bg-cream font-serif italic opacity-0 animate-fade-in-up delay-300 drop-shadow-md">
+            <p className="text-lg md:text-2xl text-bg-cream font-serif italic opacity-0 animate-fade-in-up delay-300 drop-shadow-md">
               August 22nd, 2026
             </p>
           </div>

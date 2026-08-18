@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { ResourceCarousel, type ResourceItem } from '@/components/ResourceCarousel';
 
 const bigQuestions = [
   {
@@ -36,27 +38,15 @@ const bigQuestions = [
 function QuestionCard({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      className={`rounded-2xl overflow-hidden border backdrop-blur-sm transition-all duration-300 ${
-        open ? 'border-accent-500/50 shadow-lg shadow-accent-500/10 bg-theme-800/40' : 'border-accent-500/20 bg-theme-800/20'
-      }`}
-    >
+    <div className={`rounded-2xl overflow-hidden border backdrop-blur-sm transition-all duration-300 ${open ? 'border-accent-500/50 shadow-lg shadow-accent-500/10 bg-theme-800/40' : 'border-accent-500/20 bg-theme-800/20'}`}>
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-theme-800/40 transition-colors"
       >
         <span className={`font-serif text-lg md:text-xl font-semibold pr-4 transition-colors ${open ? 'text-accent-400' : 'text-bg-cream'}`}>{q}</span>
-        <span
-          className={`text-accent-500 text-3xl font-light flex-shrink-0 transition-transform duration-500 ${
-            open ? 'rotate-45' : ''
-          }`}
-        >
-          +
-        </span>
+        <span className={`text-accent-500 text-3xl font-light flex-shrink-0 transition-transform duration-500 ${open ? 'rotate-45' : ''}`}>+</span>
       </button>
-      <div
-        className={`overflow-hidden transition-all duration-500 ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-      >
+      <div className={`overflow-hidden transition-all duration-500 ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="px-6 md:px-8 pb-8 border-t border-accent-500/10 pt-6">
           <p className="text-bg-sand/80 leading-relaxed text-sm md:text-base">{a}</p>
         </div>
@@ -65,78 +55,302 @@ function QuestionCard({ q, a }: { q: string; a: string }) {
   );
 }
 
+const godExistsResources: ResourceItem[] = [
+  {
+    title: 'Why God Must Exist, According to Logic | William Lane Craig',
+    description: 'William Lane Craig presents philosophical and logical arguments for the existence of God.',
+    href: 'https://youtu.be/Zr4_X-7hlmo',
+    videoId: 'Zr4_X-7hlmo',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: 'The God Who Is | Timothy Keller',
+    description: 'Timothy Keller examines Romans 1 on what can be known about God\'s reality and existence.',
+    href: 'https://youtu.be/Gz96tnIPGBI',
+    videoId: 'Gz96tnIPGBI',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: 'God: Fact or Fiction? | John Lennox at UNC',
+    description: 'Mathematician John Lennox addresses whether science and reason point toward a Creator.',
+    href: 'https://youtu.be/d0xyapiZ2pM',
+    videoId: 'd0xyapiZ2pM',
+    type: 'video',
+    source: 'YouTube',
+  },
+];
+
+const knowGodResources: ResourceItem[] = [
+  {
+    title: 'How Can We Know God? | John Piper',
+    description: 'John Piper explains how God reveals Himself through Christ, Scripture, and creation.',
+    href: 'https://www.desiringgod.org/interviews/how-can-we-know-god',
+    type: 'article',
+    source: 'Desiring God',
+  },
+  {
+    title: 'Knowing God | Timothy Keller — Gospel in Life Podcast',
+    description: 'Timothy Keller explores Romans 1:16-21 to answer how we can know whether God exists.',
+    href: 'https://podcast.gospelinlife.com/e/knowing-god-1754661922/',
+    type: 'podcast',
+    source: 'Gospel in Life',
+    thumbnail: 'https://d2bwo9zemjwxh5.cloudfront.net/image-logo/816279/Podcast_Image_Black_Background_1500x15009d817_1200x628.jpg?s=96aa1ccb1450d0164e70f699dcaeb6a5&e=jpg',
+  },
+];
+
+const bibleResources: ResourceItem[] = [
+  {
+    title: 'Wesley Huff | The Historical Reliability of the Bible',
+    description: 'Wesley Huff presents historical and manuscript evidence for the reliability of the Bible.',
+    href: 'https://youtu.be/pkSoTR_vhmg',
+    videoId: 'pkSoTR_vhmg',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: 'The Reliability of the New Testament | Daniel Wallace',
+    description: 'Dr. Daniel Wallace examines New Testament textual criticism and manuscript accuracy.',
+    href: 'https://youtu.be/tgU66nFgkCE',
+    videoId: 'tgU66nFgkCE',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: 'How Did We Get The Bible? | Michael Kruger',
+    description: 'Dr. Michael Kruger explains the canonical history and formation of the New Testament.',
+    href: 'https://youtu.be/vPUBjRxDQXo',
+    videoId: 'vPUBjRxDQXo',
+    type: 'video',
+    source: 'YouTube',
+  },
+];
+
+const resurrectionResources: ResourceItem[] = [
+  {
+    title: 'The Resurrection of Jesus | Reasonable Faith',
+    description: 'Examines historical grounds for Jesus\' resurrection, the empty tomb, and post-resurrection appearances.',
+    href: 'https://www.reasonablefaith.org/writings/popular-writings/jesus-resurrection/the-resurrection-of-jesus',
+    type: 'article',
+    source: 'Reasonable Faith',
+  },
+  {
+    title: 'Lee Strobel – The Case for Christ: Evidence for the Resurrection',
+    description: 'Lee Strobel presents the historical investigation and evidence for the resurrection of Jesus.',
+    href: 'https://youtu.be/rDgu3jXeCTM',
+    videoId: 'rDgu3jXeCTM',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: 'Evidence for the Resurrection | Dr. Frank Turek',
+    description: 'Dr. Frank Turek shares historical and logical arguments supporting the resurrection of Christ.',
+    href: 'https://youtu.be/sD4IFp9w5rY',
+    videoId: 'sD4IFp9w5rY',
+    type: 'video',
+    source: 'YouTube',
+  },
+];
+
+const sufferingResources: ResourceItem[] = [
+  {
+    title: "C.S. Lewis and Answers to the Problem of Pain",
+    description: "Insights from C.S. Lewis on navigating suffering, pain, and the goodness of God.",
+    href: 'https://dailycitizen.focusonthefamily.com/c-s-lewis-and-answers-to-the-problem-of-pain/',
+    type: 'article',
+    source: 'Focus on the Family',
+  },
+  {
+    title: "With all this suffering, how could there be a God? | Tim Keller",
+    description: "Tim Keller offers a thoughtful Christian response to the problem of evil and suffering.",
+    href: 'https://youtu.be/dkn5lfutSrY',
+    videoId: 'dkn5lfutSrY',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "The Loud Absence: Where is God in Suffering? | John Lennox",
+    description: "John Lennox addresses suffering and the search for meaning at Harvard Medical School.",
+    href: 'https://youtu.be/MPm6Y-pANYI',
+    videoId: 'MPm6Y-pANYI',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "Why Suffering? | Ravi Zacharias",
+    description: "Ravi Zacharias explores why a powerful and loving God allows human pain and suffering.",
+    href: 'https://youtu.be/e_PP3-ZY3_4',
+    videoId: 'e_PP3-ZY3_4',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "Answering the Problem of Evil and Suffering | Sean McDowell",
+    description: "Sean McDowell provides clear apologetic answers to objections regarding evil and suffering.",
+    href: 'https://youtu.be/jtdCr3Pxg4w',
+    videoId: 'jtdCr3Pxg4w',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "If God Is Good, Why Do I Suffer? | R.C. Sproul",
+    description: "Dr. R.C. Sproul explains the sovereignty of God and purpose of suffering in believers' lives.",
+    href: 'https://youtu.be/g6UgMDx9rJY',
+    videoId: 'g6UgMDx9rJY',
+    type: 'video',
+    source: 'YouTube',
+  },
+];
+
+const miraclesResources: ResourceItem[] = [
+  {
+    title: "Do Miracles Really Happen? | Christian Apologetics",
+    description: "An exploration of historical and philosophical evidence for miracles and divine action.",
+    href: 'https://youtu.be/SzSUVq0aeSI',
+    videoId: 'SzSUVq0aeSI',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "Are Miracles Possible? | John Lennox Explains",
+    description: "John Lennox discusses the laws of nature, David Hume's objections, and miracles.",
+    href: 'https://youtu.be/z6BArYcwXB0',
+    videoId: 'z6BArYcwXB0',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "Alvin Plantinga on Divine Action — Biola University",
+    description: "Alvin Plantinga explores how we should understand the possibility of God's action in the world.",
+    href: 'https://cct.biola.edu/divine-action/',
+    type: 'article',
+    source: 'Biola University',
+  },
+  {
+    title: "Lee Strobel: The Case for Miracles",
+    description: "Lee Strobel shares documented accounts and arguments demonstrating the validity of miracles.",
+    href: 'https://youtu.be/y3VSIWHZtOI',
+    videoId: 'y3VSIWHZtOI',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "Are Miracles Possible? | Dr. Frank Turek",
+    description: "Dr. Frank Turek tackles scientific and philosophical questions regarding miracles.",
+    href: 'https://youtu.be/hIX66kiBtuI',
+    videoId: 'hIX66kiBtuI',
+    type: 'video',
+    source: 'YouTube',
+  },
+];
+
+const jesusOnlyWayResources: ResourceItem[] = [
+  {
+    title: "One Way or Many? | Timothy Keller",
+    description: "Timothy Keller examines Jesus' claim in John 14:6 as the exclusive way to God.",
+    href: 'https://gospelinlife.com/sermon/one-way-or-many/',
+    type: 'podcast',
+    source: 'Gospel in Life',
+  },
+  {
+    title: "Lee Strobel: Jesus is the Only Way to God",
+    description: "Lee Strobel addresses religious pluralism and explains why Jesus is the only way to God.",
+    href: 'https://youtu.be/VRgb57DStO8',
+    videoId: 'VRgb57DStO8',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "Christ the Only Way | R.C. Sproul",
+    description: "R.C. Sproul explains the uniqueness of Christ's person and work for salvation.",
+    href: 'https://youtu.be/OGo9Y1SeOtU',
+    videoId: 'OGo9Y1SeOtU',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "The Only Way to Heaven | John MacArthur",
+    description: "Dr. John MacArthur preaches on the exclusivity of the Gospel and the narrow gate to life.",
+    href: 'https://youtu.be/9yEI5H9vuFs',
+    videoId: '9yEI5H9vuFs',
+    type: 'video',
+    source: 'YouTube',
+  },
+  {
+    title: "Is Jesus the Only Way to God? | Apologetics",
+    description: "Biblical examination of Christian exclusivity and the uniqueness of salvation in Christ alone.",
+    href: 'https://youtu.be/dcb5SXl4ncs',
+    videoId: 'dcb5SXl4ncs',
+    type: 'video',
+    source: 'YouTube',
+  },
+];
+
 export default function ApologeticsContent() {
   return (
-    <main className="pt-24 relative overflow-hidden">
-      {/* Global Background Glow */}
+    <main className="relative overflow-hidden">
+      {/* Hero Banner */}
+      <div className="relative w-full h-64 md:h-80 overflow-hidden">
+        <Image src="/hero-image.jpg" alt="Questioning Christianity" fill priority className="object-cover object-top" />
+        <div className="absolute inset-0 bg-theme-900/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-theme-900 via-theme-900/40 to-transparent" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center pt-20 text-center px-4">
+          <h1 className="font-serif text-5xl md:text-7xl font-bold text-bg-cream mb-4 drop-shadow-lg">Questioning Christianity?</h1>
+          <div className="flex items-center justify-center gap-5 mb-4">
+            <div className="h-px w-14 bg-gradient-to-r from-transparent to-accent-500/50" />
+            <span className="text-accent-500 text-sm">✦</span>
+            <div className="h-px w-14 bg-gradient-to-l from-transparent to-accent-500/50" />
+          </div>
+          <p className="text-accent-400 font-serif italic text-lg md:text-xl max-w-xl">
+            Atheist? Skeptic? Agnostic? Curious? <span className="not-italic font-semibold text-bg-cream">You are welcome here.</span>
+          </p>
+        </div>
+      </div>
+
+      {/* Background glow */}
       <div className="absolute top-[20%] left-[10%] w-[50%] h-[50%] bg-theme-700 rounded-full blur-[150px] opacity-20 pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-[10%] right-[10%] w-[40%] h-[40%] bg-accent-500 rounded-full blur-[200px] opacity-10 pointer-events-none mix-blend-screen" />
 
-      {/* Hero header */}
-      <div className="py-24 px-4 text-center relative z-10">
-        <p className="text-[10px] md:text-xs font-semibold text-accent-500 uppercase tracking-[0.3em] mb-4">
-          Section 3 — The Apologetics Corner
+      <div className="relative z-10 py-16 px-4 md:px-8 max-w-4xl mx-auto">
+        <p className="text-bg-sand/70 text-center text-sm md:text-base leading-relaxed mb-16 max-w-2xl mx-auto">
+          Christianity does not ask us to abandon our minds. Bring your questions, examine the evidence, challenge the claims and consider the case for Christianity.
         </p>
-        <h1 className="font-serif text-5xl md:text-7xl font-bold text-bg-cream mb-6 drop-shadow-sm">
-          Questioning Christianity?
-        </h1>
-        <div className="flex items-center justify-center gap-6 mb-8">
-          <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent-500/30" />
-          <span className="text-accent-500 text-sm">✦</span>
-          <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent-500/30" />
-        </div>
-        <p className="font-serif text-accent-400 italic text-xl md:text-2xl max-w-xl mx-auto mb-6">
-          Atheist? Skeptic? Agnostic? Curious?<br />
-          <span className="not-italic font-semibold text-bg-cream mt-2 block">You are welcome here.</span>
-        </p>
-        <p className="text-bg-sand/70 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-          Christianity does not ask us to abandon our minds. Bring your questions, examine the evidence, challenge the claims and consider the case for Christianity. We invite you to consider, and to listen to how people have responded to your questions.
-        </p>
-      </div>
 
-      {/* Big Questions */}
-      <div className="py-16 px-4 relative z-10">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-bg-cream mb-3 drop-shadow-sm">
-              Big Questions
-            </h2>
-            <p className="text-bg-sand/50 text-sm uppercase tracking-widest font-semibold">
-              Select any question to read a brief response
-            </p>
+        {/* Big Questions Accordion */}
+        <div className="mb-20">
+          <div className="text-center mb-10">
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-bg-cream mb-3">Big Questions</h2>
+            <p className="text-bg-sand/50 text-sm uppercase tracking-widest font-semibold">Select any question to read a brief response</p>
           </div>
-
-          <div className="space-y-4 mb-24">
+          <div className="space-y-4">
             {bigQuestions.map((item) => (
               <QuestionCard key={item.q} {...item} />
             ))}
           </div>
-
-          {/* Go Deeper */}
-          <div className="relative bg-theme-800/40 backdrop-blur-md border border-accent-500/20 rounded-3xl p-12 text-center shadow-2xl overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-            
-            <div className="text-5xl mb-6 drop-shadow-md">🔭</div>
-            <h3 className="font-serif text-3xl font-bold text-bg-cream mb-4">Go Deeper</h3>
-            <p className="text-bg-sand/70 text-base leading-relaxed mb-8 max-w-lg mx-auto">
-              For more thorough theological and apologetic resources — including essays, recommended readings and further study — visit Gospel Lens.
-            </p>
-            <Link
-              href="https://gospellens.site"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-accent-500 text-theme-900 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-accent-400 hover:shadow-lg hover:shadow-accent-500/20 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Visit Gospel Lens →
-            </Link>
-          </div>
         </div>
       </div>
 
-      <div className="pb-24 pt-8 text-center relative z-10">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase text-bg-sand/50 hover:text-accent-400 transition-colors">
-          <span className="text-lg">←</span> Back to Home
-        </Link>
+      {/* Resource Carousels — full width for scrolling */}
+      <div className="relative z-10 py-4 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-3xl font-bold text-bg-cream mb-3">Go Deeper</h2>
+          <p className="text-bg-sand/60 text-sm">Explore responses to each question from theologians, philosophers and apologists.</p>
+        </div>
+
+        <ResourceCarousel title="Does God Exist?" subtitle="Cosmological, teleological & moral arguments" icon={<span className="text-2xl">🌌</span>} items={godExistsResources} />
+        <ResourceCarousel title="Can We Know God?" subtitle="Revelation, Scripture & personal knowledge" icon={<span className="text-2xl">🕊️</span>} items={knowGodResources} />
+        <ResourceCarousel title="Is the Bible Reliable?" subtitle="Manuscript evidence, archaeology & prophecy" icon={<span className="text-2xl">📜</span>} items={bibleResources} />
+        <ResourceCarousel title="Did Jesus Rise From the Dead?" subtitle="Historical evidence for the Resurrection" icon={<span className="text-2xl">✝️</span>} items={resurrectionResources} />
+        <ResourceCarousel title="Why Does God Allow Suffering?" subtitle="The problem of evil — honest engagement" icon={<span className="text-2xl">❤️‍🩹</span>} items={sufferingResources} />
+        <ResourceCarousel title="Are Miracles Possible?" subtitle="Science, philosophy & divine action" icon={<span className="text-2xl">⚡</span>} items={miraclesResources} />
+        <ResourceCarousel title="Is Jesus the Only Way?" subtitle="The exclusive claims of Christ" icon={<span className="text-2xl">🚪</span>} items={jesusOnlyWayResources} />
+
+        <div className="pb-24 pt-8 text-center">
+          <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase text-bg-sand/50 hover:text-accent-400 transition-colors">
+            <span className="text-lg">←</span> Back to Home
+          </Link>
+        </div>
       </div>
     </main>
   );
