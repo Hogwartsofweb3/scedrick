@@ -216,7 +216,7 @@ export default function FaithPage() {
 
       {/* Topic Cards — side by side grid */}
       <div className="relative z-10 px-4 md:px-8 max-w-7xl mx-auto mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-start">
           {topics.map((topic) => (
             <TopicCard key={topic.title} topic={topic} />
           ))}

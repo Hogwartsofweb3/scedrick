@@ -6,7 +6,7 @@ export default function Footer() {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h2 className="font-serif text-3xl font-bold text-bg-cream mb-2 tracking-wide drop-shadow-sm">
-          Jonathan &amp; Charisma
+          Charisma &amp; Jonathan
         </h2>
         <p className="font-serif text-accent-400 italic mb-8">
           August 22nd, 2026
