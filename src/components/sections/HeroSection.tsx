@@ -108,9 +108,9 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-theme-900 via-theme-900/40 to-transparent" />
         </div>
 
-        {/* Text Content Overlay */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-center md:justify-end mt-16 md:mt-32 px-6 md:px-12">
-          <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-xl">
+        {/* Text Content Overlay — pinned to far right to clear the photo */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex justify-end mt-16 md:mt-32 px-6 md:px-16">
+          <div className="flex flex-col items-end text-right w-[55%] md:w-[42%]">
             <div className="opacity-0 animate-fade-in-up">
               <p className="text-xs font-semibold text-accent-400 uppercase tracking-[0.4em] mb-4 md:mb-6 drop-shadow-md">
                 Love and Grace
