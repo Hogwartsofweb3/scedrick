@@ -6,11 +6,11 @@ import WordFromYouSection from '@/components/sections/WordFromYouSection';
 import TreasurySection from '@/components/sections/TreasurySection';
 
 export const metadata: Metadata = {
-  title: 'Love and Grace | Jonathan & Charisma',
-  description: 'A curated collection of Christian resources, reflections and invitations — a wedding gift from Jonathan Fredrick & Charisma Standley.',
+  title: 'Love and Grace | Charisma & Jonathan',
+  description: 'A curated collection of Christian resources, reflections and invitations — a wedding gift from Charisma and Jonathan Fredrick.',
   openGraph: {
-    title: 'Love and Grace | Jonathan & Charisma',
-    description: 'A curated collection of Christian resources, reflections and invitations — a wedding gift from Jonathan Fredrick & Charisma Standley.',
+    title: 'Love and Grace | Charisma & Jonathan',
+    description: 'A curated collection of Christian resources, reflections and invitations — a wedding gift from Charisma and Jonathan Fredrick.',
     url: 'https://scedrick.vercel.app/',
     siteName: 'Love and Grace',
     locale: 'en_US',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main>
-      {/* Section 1 — Hero */}
+      {/* Hero */}
       <HeroSection />
 
       {/* Section Previews — Gems, Apologetics, Faith */}
@@ -73,11 +73,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 5 — A Word From You */}
-      <WordFromYouSection />
-
-      {/* Section 6 — The Treasury */}
+      {/* The Treasury */}
       <TreasurySection />
+
+      {/* A Word From You — moved below Treasury */}
+      <WordFromYouSection />
     </main>
   );
 }

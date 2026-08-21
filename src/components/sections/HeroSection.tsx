@@ -118,8 +118,8 @@ export default function HeroSection() {
             </div>
 
             <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-bg-cream mb-4 md:mb-6 opacity-0 animate-fade-in-up delay-100 leading-tight drop-shadow-lg">
-              Jonathan <span className="text-accent-500 font-light">&amp;</span> <br />
-              <span className="italic text-accent-400">Charisma</span>
+              Charisma <span className="text-accent-500 font-light">&amp;</span> <br />
+              <span className="italic text-accent-400">Jonathan</span>
             </h1>
 
             <div className="flex items-center gap-6 mb-6 md:mb-8 opacity-0 animate-fade-in-up delay-200">

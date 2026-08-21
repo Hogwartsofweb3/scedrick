@@ -1,36 +1,100 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ResourceCarousel, type ResourceItem } from '@/components/ResourceCarousel';
-
-export const metadata: Metadata = {
-  title: 'Many-Faced Faith | Love and Grace',
-  description: 'What does biblical Christianity actually teach? We explore the Prosperity Gospel, abortion, eternal security and more.',
-};
 
 const topics = [
   {
     icon: <Image src="https://img.icons8.com/ios-filled/100/d4af37/money-bag.png" alt="Prosperity" width={60} height={60} className="object-contain" />,
     title: 'The Prosperity Gospel',
-    question: 'Does God promise every Christian health, wealth and success?',
-    answer:
-      "The Prosperity Gospel teaches that faith, positive speech and tithing will guarantee God's blessing of health and wealth. But this is a distortion of the biblical Gospel. Jesus promised His followers a cross, not a Cadillac. The Bible is honest about suffering, and calls us to faithfulness regardless of earthly outcomes. True Gospel hope is not in temporal prosperity but in the resurrection and the life to come.",
+    question: 'Does God promise every Christian health, wealth, and earthly success?',
+    preview: 'In citing the Old Testament promises of God for the nation of Israel, the Prosperity Gospel teaches that faith, positive speech, and tithing will guarantee God\'s blessing of health and wealth...',
+    answer: `In citing the Old Testament promises of God for the nation of Israel, God's people in general, the Prosperity Gospel teaches that faith, positive speech (confession/claiming), and tithing will guarantee God's blessing of health and wealth to the New Testament believer. However, this is a distortion of the biblical Gospel.
+
+Having been redeemed and justified by the power of the work of Jesus on Calvary (Romans 3:24–26; Ephesians 1:7), Jesus promises His followers a cross—a life antithetical to the natural human inclinations toward convenience and self-preservation—not a Cadillac. "If anyone would come after me, let him deny himself and take up his cross and follow me" (Matthew 16:24; cf. Luke 9:23).
+
+The Bible, filled with the teachings of Jesus and His apostles, is honest about suffering and calls us to faithfulness regardless of earthly outcomes (John 16:33; Acts 14:22; 2 Timothy 3:12). Paul himself experienced both abundance and need, learning contentment in either circumstance (Philippians 4:11–13).
+
+The true Gospel hope, therefore, is not in temporal, earth-based prosperity but in the resurrection and the life to come (1 Corinthians 15:19–23; 1 Peter 1:3–4). Our treasure is ultimately not here, where earthly things perish, but in heaven (Matthew 6:19–21).`,
   },
   {
     icon: <Image src="https://img.icons8.com/ios-filled/100/d4af37/sprout.png" alt="Life" width={60} height={60} className="object-contain" />,
     title: 'Abortion',
     question: 'What does the Christian faith say about the value and dignity of human life?',
-    answer:
-      "The Christian faith teaches that every human being is made in the image of God (imago Dei) — and that this dignity begins at conception. Unborn life, therefore, is not a mere biological process but a sacred gift. Christians who oppose abortion do so not from political ideology but from a deep conviction about the sanctity of every human life at every stage, from womb to tomb.",
+    preview: 'However nuanced and somewhat controversial this topic might be, the Christian faith teaches that every human being is made in the image of God (imago Dei)—and that human life in the womb is known and valued by God...',
+    answer: `However nuanced and somewhat controversial this topic might be, the Christian faith teaches that every human being is made in the image of God (imago Dei)—and that human life in the womb is known and valued by God (Genesis 1:26–27; Psalm 139:13–16; Jeremiah 1:5).
+
+Unborn life, therefore, is not merely a biological process but human life that bears profound dignity because human beings are made in the image of God. The biblical witness consistently presents God as knowing and forming human beings in the womb (Isaiah 49:1; Luke 1:41–44).
+
+Christians who oppose abortion do so not merely from political ideology or from a lack of human empathy, but from a deep conviction about the sanctity and dignity of human life at every stage, from womb to tomb (Genesis 9:6; Psalm 139:13–16). The Christian conviction is that every human life, as a gift from God, possesses inherent dignity and should be protected rather than treated as disposable.
+
+This conviction also produces compassion toward women facing difficult pregnancies. The Christian response does not condemn, but upholds the dignity of both mother and child, extending truth, mercy, practical support, and love (Micah 6:8; Galatians 6:2).`,
   },
   {
     icon: <Image src="https://img.icons8.com/ios-filled/100/d4af37/shield.png" alt="Security" width={60} height={60} className="object-contain" />,
     title: 'Eternal Security',
-    question: 'Is "once saved, always saved" true — no matter what?',
-    answer:
-      "This is a genuinely contested question among sincere Christians. Those who affirm eternal security argue that salvation is God's work, and He completes what He begins (Philippians 1:6). Others emphasise the need for perseverance and genuine ongoing faith. What most traditions agree on is this: true saving faith produces fruit — it is not a mere intellectual assent but a life-transforming reality. The question of eternal security is best understood not as a license to sin, but as an anchor of assurance for the genuinely faithful.",
+    question: 'Is "once saved, always saved" true—no matter what?',
+    preview: 'This is a genuinely contested question among sincere Christians. There are some who affirm eternal security and argue that salvation is God\'s work, and that He completes what He begins...',
+    answer: `This is a genuinely contested question among sincere Christians. There are some who affirm eternal security and argue that salvation is God's work, and that He completes what He begins (Philippians 1:6; John 10:27–29; Romans 8:38–39). Others emphasise the need for perseverance and genuine, ongoing faith (Matthew 24:13; Colossians 1:21–23; Hebrews 3:14).
+
+However, the correct disposition toward this discourse is that true saving faith produces fruit. It is not merely intellectual assent but a life-transforming reality (James 2:17–18; 2 Corinthians 5:17; Galatians 5:22–23).
+
+The question of eternal security is therefore best understood not as a license to sin, but as an anchor of assurance for the genuinely faithful. The God who has saved His own will keep them to the end, and His own will continue to persevere in righteousness (John 10:28–29; Philippians 1:6).
+
+This is why Paul can simultaneously speak of salvation as God's work and command believers to "work out [their] own salvation with fear and trembling"—because "it is God who works in [them], both to will and to work for his good pleasure" (Philippians 2:12–13).
+
+Grace, therefore, does not make holiness unnecessary. Grace produces holiness. A person who has genuinely been transformed by Christ will not regard salvation as permission to live continually in rebellion against the One who saved him (Romans 6:1–2, 14–15; Titus 2:11–12).`,
   },
 ];
+
+function TopicCard({ topic }: { topic: typeof topics[0] }) {
+  const [expanded, setExpanded] = useState(false);
+  const paragraphs = topic.answer.split('\n\n');
+
+  return (
+    <div className="bg-theme-800/30 backdrop-blur-md border border-accent-500/20 rounded-[2rem] p-8 hover:border-accent-500/40 hover:shadow-2xl hover:shadow-accent-500/10 transition-all duration-500 relative overflow-hidden group flex flex-col">
+      <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Icon + Title */}
+        <div className="flex items-start gap-5 mb-4">
+          <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-500">{topic.icon}</div>
+          <div>
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-bg-cream mb-2">{topic.title}</h3>
+            <p className="text-accent-400 text-sm md:text-base font-serif italic leading-relaxed">{topic.question}</p>
+          </div>
+        </div>
+
+        {/* Answer */}
+        <div className="text-bg-sand/70 text-sm leading-relaxed flex-grow">
+          {!expanded ? (
+            <p>
+              {topic.preview}{' '}
+              <button
+                onClick={() => setExpanded(true)}
+                className="text-accent-400 font-semibold hover:text-accent-300 transition-colors whitespace-nowrap"
+              >
+                ...see more
+              </button>
+            </p>
+          ) : (
+            <div className="space-y-4">
+              {paragraphs.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+              <button
+                onClick={() => setExpanded(false)}
+                className="text-accent-400 font-semibold hover:text-accent-300 transition-colors text-sm"
+              >
+                ↑ Show less
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const prosperityResources: ResourceItem[] = [
   {
@@ -148,31 +212,20 @@ export default function FaithPage() {
         <p className="text-bg-sand/70 text-center text-sm md:text-base leading-relaxed mb-16">
           Christianity is often represented in many different and sometimes contradictory ways. Here we address some of the questions that divide — with honesty, nuance and biblical grounding.
         </p>
+      </div>
 
-        {/* Topic cards */}
-        <div className="space-y-8 mb-16">
+      {/* Topic Cards — side by side grid */}
+      <div className="relative z-10 px-4 md:px-8 max-w-7xl mx-auto mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {topics.map((topic) => (
-            <div
-              key={topic.title}
-              className="bg-theme-800/30 backdrop-blur-md border border-accent-500/20 rounded-[2rem] p-8 md:p-12 hover:border-accent-500/40 hover:shadow-2xl hover:shadow-accent-500/10 transition-all duration-500 relative overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8 relative z-10">
-                <div className="text-5xl md:text-6xl flex-shrink-0 drop-shadow-lg group-hover:scale-110 transition-transform duration-500">{topic.icon}</div>
-                <div>
-                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-bg-cream mb-3">{topic.title}</h3>
-                  <p className="text-accent-400 text-base md:text-lg font-serif italic mb-5 leading-relaxed">{topic.question}</p>
-                  <p className="text-bg-sand/70 text-sm md:text-base leading-relaxed">{topic.answer}</p>
-                </div>
-              </div>
-            </div>
+            <TopicCard key={topic.title} topic={topic} />
           ))}
         </div>
       </div>
 
       {/* Resource Carousels */}
       <div className="relative z-10 pb-8 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-16">
           <h2 className="font-serif text-3xl font-bold text-bg-cream mb-3">Go Deeper</h2>
           <p className="text-bg-sand/60 text-sm">Watch and read more on each topic from trusted voices.</p>
         </div>

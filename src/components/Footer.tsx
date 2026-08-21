@@ -19,7 +19,7 @@ export default function Footer() {
         </div>
 
         <p className="text-bg-sand/60 text-sm">
-          &copy; {new Date().getFullYear()} Jonathan Fredrick &amp; Charisma Standley. All rights reserved.
+          &copy; {new Date().getFullYear()} Charisma and Jonathan Fredrick. All rights reserved.
         </p>
       </div>
     </footer>

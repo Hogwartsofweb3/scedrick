@@ -84,7 +84,7 @@ export default function TreasurySection() {
               Saved and In Love
             </h3>
             <p className="text-bg-sand/60 text-sm leading-relaxed mb-8">
-              A worship playlist for those who are saved by grace and walking in love — music for the journey of faith and marriage.
+              A podcast playlist for those who are saved by grace and walking in love — conversations on the journey of faith and marriage.
             </p>
             <span className="inline-block text-accent-500 text-sm font-bold tracking-wide group-hover:translate-x-2 transition-transform duration-300">
               Open on Spotify →

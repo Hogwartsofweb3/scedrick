@@ -7,19 +7,19 @@ import { ResourceCarousel, type ResourceItem } from '@/components/ResourceCarous
 const bigQuestions = [
   {
     q: 'Does God exist?',
-    a: 'The existence of God is one of the most important questions anyone can ask. From the cosmological argument to the fine-tuning of the universe, from the moral argument to the argument from consciousness — there are serious, thoughtful reasons to believe in a Creator. We invite you to examine the evidence and follow it where it leads.',
+    a: 'Yes. The existence of God is one of the most important questions anyone can ask. From the cosmological argument to the fine-tuning of the universe, from the moral argument to the argument from consciousness — there are serious, thoughtful reasons to believe in a Creator. We invite you to examine the evidence and follow it where it leads.',
   },
   {
     q: 'Can we know God?',
-    a: 'If God exists and created us, it is reasonable to ask whether He has revealed Himself. Christians believe God has spoken through creation, through conscience, and most fully through Jesus Christ and the Scriptures. This is not a blind leap — it is a considered trust based on evidence and testimony.',
+    a: 'Yes. If God exists and created us, it is reasonable to ask whether He has revealed Himself. Christians believe God has spoken through creation, through conscience, and most fully through Jesus Christ and the Scriptures. This is not a blind leap — it is a considered trust based on evidence and testimony.',
   },
   {
     q: 'Is the Bible reliable?',
-    a: 'The Bible is the most historically scrutinised document in human history — and it holds up remarkably well. From manuscript evidence to archaeological corroboration to fulfilled prophecy, there are compelling reasons to trust the Biblical text as a reliable historical document.',
+    a: 'Yes. The Bible is the most historically scrutinised document in human history — and it holds up remarkably well. From manuscript evidence to archaeological corroboration to fulfilled prophecy, there are compelling reasons to trust the Biblical text as a reliable historical document.',
   },
   {
     q: 'Did Jesus really rise from the dead?',
-    a: "The Resurrection is the cornerstone of the Christian faith. The empty tomb, the post-resurrection appearances, and the radical transformation of the disciples are historical facts that demand an explanation. The bodily resurrection of Jesus remains the most historically compelling explanation for what happened.",
+    a: 'Yes. The Resurrection is the cornerstone of the Christian faith. The empty tomb, the post-resurrection appearances, and the radical transformation of the disciples are historical facts that demand an explanation. The bodily resurrection of Jesus remains the most historically compelling explanation for what happened.',
   },
   {
     q: 'Why does God allow suffering?',
