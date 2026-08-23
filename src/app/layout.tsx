@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   title: 'A Gift of Faith & Truth | Jonathan & Charisma',
   description: 'A curated collection of Christian resources gifted at the wedding of Charisma and Jonathan Fredrick.',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.jpg',
+    apple: '/favicon.jpg',
   },
 };
 
