@@ -291,11 +291,13 @@ export default function ApologeticsContent() {
   return (
     <main className="relative overflow-hidden">
       {/* Hero Banner */}
-      <div className="relative w-full h-64 md:h-80 overflow-hidden">
-        <Image src="/hero-image.jpg" alt="Questioning Christianity" fill priority className="object-cover object-top" />
-        <div className="absolute inset-0 bg-theme-900/65" />
-        <div className="absolute inset-0 bg-gradient-to-t from-theme-900 via-theme-900/40 to-transparent" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-20 text-center px-4">
+      <div className="relative w-full min-h-[16rem] md:min-h-[20rem] pb-8">
+        <div className="absolute inset-0 overflow-hidden rounded-none">
+          <Image src="/hero-image.jpg" alt="Questioning Christianity" fill priority className="object-cover object-top" />
+          <div className="absolute inset-0 bg-theme-900/65" />
+          <div className="absolute inset-0 bg-gradient-to-t from-theme-900 via-theme-900/40 to-transparent" />
+        </div>
+        <div className="relative z-10 flex flex-col items-center justify-center pt-28 pb-10 text-center px-4">
           <h1 className="font-serif text-5xl md:text-7xl font-bold text-bg-cream mb-4 drop-shadow-lg">Questioning Christianity?</h1>
           <div className="flex items-center justify-center gap-5 mb-4">
             <div className="h-px w-14 bg-gradient-to-r from-transparent to-accent-500/50" />
